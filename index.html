@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomas Salo</title>
+<meta name="description" content="Tomas Salo – tietotekniikan opiskelija Turun yliopistosta. Projektinhallinta, tekninen asiakastyö ja ohjelmointi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sali:#14223a;      /* elokuvasalin syvä sininen */
+  --sali-2:#1d3052;
+  --valo:#f4c95d;      /* projektorin lämmin valo */
+  --kangas:#eef1f5;    /* valkokangas, viileä */
+  --muste:#1a1f29;
+  --harmaa:#5a6474;
+  --viiva:#cdd4de;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Literata",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--kangas);color:var(--muste);font:400 1.0625rem/1.7 var(--body)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--valo);outline-offset:3px;border-radius:2px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.5rem}
+
+/* ---------- Hero: valokeila salissa ---------- */
+.hero{position:relative;overflow:hidden;background:var(--sali);color:#fff;padding:5.5rem 0 4.5rem}
+.hero::before{ /* projektorin valokeila */
+  content:"";position:absolute;top:-10%;right:-20%;width:90%;height:140%;
+  background:conic-gradient(from 238deg at 100% 0%,transparent 0deg,rgba(244,201,93,.18) 14deg,rgba(244,201,93,.05) 34deg,transparent 46deg);
+  filter:blur(28px);pointer-events:none;animation:keila 2.4s ease-out both}
+@keyframes keila{from{opacity:0}to{opacity:1}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:end}
+.hero h1{font:800 clamp(3.2rem,10vw,7.5rem)/.88 var(--display);letter-spacing:-.035em;margin:0 0 1.5rem}
+.hero h1 span{display:block}
+.hero p.lead{font-size:1.2rem;max-width:34rem;margin:0 0 2rem;color:#d7deea}
+.linkit{display:flex;flex-wrap:wrap;gap:.75rem;margin:0;padding:0;list-style:none}
+.linkit a{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font:600 1rem var(--display);
+  padding:.65rem 1.1rem;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;transition:background .15s,border-color .15s}
+.linkit a:hover{border-color:var(--valo);background:rgba(244,201,93,.12)}
+.linkit a.paa{background:var(--valo);border-color:var(--valo);color:var(--sali)}
+.linkit a.paa:hover{background:#ffd978}
+.linkit svg{width:1.1em;height:1.1em;fill:currentColor}
+
+.kuva{width:15rem;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--sali-2);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 60px rgba(244,201,93,.18)}
+.kuva img{width:100%;height:100%;object-fit:cover;display:block}
+.kuva .tyhja{height:100%;display:grid;place-items:center;font:800 4.5rem var(--display);color:rgba(255,255,255,.25)}
+
+/* ---------- Osiot ---------- */
+section{padding:4.5rem 0;border-top:1px solid var(--viiva)}
+section:first-of-type{border-top:0}
+h2{font:800 clamp(1.9rem,4vw,2.6rem)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 2rem}
+h3{font:600 1.25rem/1.3 var(--display);margin:0 0 .35rem}
+.kaksi{display:grid;grid-template-columns:14rem 1fr;gap:2rem 3rem}
+.kaksi > h2{margin:0}
+.proosa p{max-width:40rem;margin:0 0 1.1rem}
+
+/* Osaaminen: ryhmitellyt listat */
+.taidot{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:2rem 2.5rem}
+.taidot ul{list-style:none;margin:.6rem 0 0;padding:0}
+.taidot li{padding:.3rem 0;border-bottom:1px solid var(--viiva)}
+.taidot h3{font-size:1.05rem;color:var(--harmaa)}
+
+/* Projektit: listariveinä */
+.projektit{list-style:none;margin:0;padding:0}
+.projekti{display:grid;grid-template-columns:1fr 13rem;gap:.5rem 3rem;padding:1.8rem 0;border-top:1.5px solid var(--muste)}
+.projekti:last-child{border-bottom:1.5px solid var(--muste)}
+.projekti p{margin:.2rem 0 .8rem;max-width:40rem}
+.tagit{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;list-style:none}
+.tagit li{font:600 .8rem var(--display);padding:.2rem .6rem;border-radius:999px;background:#dde3ec;color:var(--sali)}
+.projekti .meta{font-size:.95rem;color:var(--harmaa)}
+.projekti .meta a{font-family:var(--display);font-weight:600;color:var(--muste)}
+
+/* Aikajana: oikea järjestys, siksi jana */
+.aikajana{list-style:none;margin:0;padding:0;position:relative}
+.aikajana li{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;padding:0 0 2rem}
+.aikajana .aika{font:600 .95rem/1.7 var(--display);color:var(--harmaa)}
+.aikajana .rooli{color:var(--harmaa);font-size:.98rem}
+.aikajana p{margin:.4rem 0 0;max-width:38rem}
+
+footer{background:var(--sali);color:#d7deea;padding:3.5rem 0}
+footer h2{color:#fff}
+footer .linkit a{color:#fff}
+footer small{display:block;margin-top:2.5rem;color:#8d9ab0;font-size:.85rem}
+
+@media (max-width:760px){
+  .hero{padding:3.5rem 0 3rem}
+  .hero .wrap{grid-template-columns:1fr;gap:2rem}
+  .kuva{width:9rem;order:-1}
+  .kaksi,.projekti,.aikajana li{grid-template-columns:1fr}
+  .aikajana li{gap:.2rem}
+  section{padding:3.2rem 0}
+  .wrap{padding:0 1rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1><span>Tomas</span><span>Salo</span></h1>
+      <p class="lead">Tietotekniikan opiskelija Turusta. Pidän tekniikan käynnissä, projektit aikataulussa ja asiakkaat ajan tasalla.</p>
+      <ul class="linkit">
+        <li><a class="paa" href="mailto:tomassalo@live.fi">Lähetä sähköpostia</a></li>
+        <li><a href="https://www.linkedin.com/in/tomas-salo-61817139a/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn</a></li>
+        <li><a href="https://github.com/TomasSalo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg>
+          GitHub</a></li>
+      </ul>
+    </div>
+    <div class="kuva">
+      <!-- Vaihda tähän oma kuva: <img src="kuva.jpg" alt="Tomas Salo"> -->
+      <div class="tyhja" aria-label="Kuva tulossa">TS</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="minusta">
+    <div class="wrap kaksi">
+      <h2>Minusta</h2>
+      <div class="proosa">
+        <p>Opiskelen toista vuotta tietotekniikkaa Turun yliopistossa, ja tekniikan kandidaatin opinnoista on takana 94 opintopistettä. Minua kiinnostavat erityisesti tehtävät, joissa tekninen ymmärrys, projektityö ja ihmisten kanssa toimiminen kohtaavat: IT-tuki, projektikoordinaatio ja tekninen asiakastyö.</p>
+        <p>Finnkinolla vastaan koneenhoitajana teatterin tekniikasta. Huolehdin, että näytökset käynnistyvät ja pyörivät suunnitellusti, ja valmistelen yritystilaisuuksien tekniset osuudet asiakkaan toiveiden mukaan. Siirryin tekniikkapuolelle neljän asiakaspalveluvuoden jälkeen.</p>
+        <p>Ennen opintoja toimin betonitehtaalla logistiikkavastaavana ja kouluttajana: koordinoin materiaalivirtoja, perehdytin uusia työntekijöitä ja vein läpi 5S-projektin. Minulla on IPMA-sertifikaatti projektinhallinnasta, ja olen käynyt Merivoimien reserviupseerikurssin.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="osaaminen">
+    <div class="wrap">
+      <h2>Osaaminen</h2>
+      <div class="taidot">
+        <div>
+          <h3>Ohjelmointi ja työkalut</h3>
+          <ul><li>Java (olio-ohjelmointi, Maven, JUnit)</li><li>Python</li><li>SQL ja SQLite</li><li>Git, GitHub ja CI/CD (GitLab CI, GitHub Actions)</li></ul>
+        </div>
+        <div>
+          <h3>Tekniset alueet</h3>
+          <ul><li>Tietokannat</li><li>Tietoverkot</li><li>Kyberturvallisuus</li><li>Unix ja komentorivi</li><li>Ohjelmistotuotanto</li></ul>
+        </div>
+        <div>
+          <h3>Projektit ja ihmiset</h3>
+          <ul><li>Projektinhallinta (IPMA Foundation, 2026)</li><li>Tekninen asiakastyö ja B2B-tilaisuudet</li><li>Perehdytys ja kouluttaminen</li><li>Yhteistyökumppanisuhteet</li></ul>
+        </div>
+        <div>
+          <h3>Kielet</h3>
+          <ul><li>Suomi, äidinkieli</li><li>Englanti, erinomainen</li><li>Ruotsi, hyvä</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projektit">
+    <div class="wrap">
+      <h2>Projekteja opinnoista</h2>
+      <ul class="projektit">
+        <li class="projekti">
+          <div>
+            <h3>Elokuvateatterin varausjärjestelmä</h3>
+            <p>Ohjelmoinnin harjoitustyö pareittain. Asiakas selaa näytöksiä ja varaa paikan; järjestelmä tarkistaa ikärajan ja salin kapasiteetin. Ylläpitäjä kirjautuu sisään ja hallitsee elokuvia, näytöksiä ja varauksia. Tiedot tallentuvat SQLite-tietokantaan.</p>
+            <ul class="tagit"><li>Java</li><li>SQLite / JDBC</li><li>Maven</li><li>JUnit 5</li></ul>
+          </div>
+          <div class="meta">Parityö Kalle Karjalaisen kanssa, kevät 2026<br><a href="https://github.com/TomasSalo/elokuvateatteri-varausjarjestelma" target="_blank" rel="noopener">Koodi GitHubissa</a></div>
+        </li>
+        <li class="projekti">
+          <div>
+            <h3>Kirjastosovellus ja datankäsittely Pythonilla</h3>
+            <p>Kirjojen hallintaohjelma, joka tallentaa tiedot tiedostoon ja jolle tein graafisen Tkinter-käyttöliittymän. Mukana myös pieniä datankäsittelyohjelmia, kuten virheellisen vuosiaineiston siivous ja nimilistan käsittely kattavalla virheenkäsittelyllä.</p>
+            <ul class="tagit"><li>Python</li><li>Tkinter</li><li>Tiedostojen käsittely</li></ul>
+          </div>
+          <div class="meta">Ohjelmoinnin perusteet, syksy 2025<br><a href="https://github.com/TomasSalo/python-harjoituksia" target="_blank" rel="noopener">Koodi GitHubissa</a></div>
+        </li>
+        <li class="projekti">
+          <div>
+            <h3>CI/CD-putki Java-projektille</h3>
+            <p>Putki, joka kääntää Java-ohjelman, ajaa JUnit-testit ja julkaisee tuloksen automaattisesti jokaisen muutoksen yhteydessä. Tein sen alun perin GitLab CI:llä ja siirsin GitHub Actionsiin.</p>
+            <ul class="tagit"><li>GitLab CI</li><li>GitHub Actions</li><li>Java</li><li>JUnit</li></ul>
+          </div>
+          <div class="meta">Syksy 2026<br><a href="https://github.com/TomasSalo/cicd-harjoitus" target="_blank" rel="noopener">Koodi GitHubissa</a></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="kokemus">
+    <div class="wrap kaksi">
+      <h2>Työ ja opinnot</h2>
+      <ol class="aikajana" reversed>
+        <li><div class="aika">2026–</div><div><h3>Teknillinen skimbakerho</h3><div class="rooli">Hallituksen jäsen, yhteistyövastaava</div><p>Vastaan kerhon yhteistyökumppanisuhteista. Syksyllä 2026 toimin myös tuutorina uusille tietotekniikan opiskelijoille.</p></div></li>
+        <li><div class="aika">2025–</div><div><h3>Turun yliopisto</h3><div class="rooli">Tietotekniikka, tekniikan kandidaatti</div><p>Keskeisiä kursseja: projektinhallinta, ohjelmistotuotanto, olio-ohjelmointi, tietokannat, tietoverkkotekniikat ja kyberturvallisuus.</p></div></li>
+        <li><div class="aika">2022–</div><div><h3>Finnkino</h3><div class="rooli">Koneenhoitaja (tekniikka) kevät 2026–, asiakaspalvelija 2022–2026</div><p>Teatterin tekninen pyörittäminen ja yritystilaisuuksien tekninen valmistelu. Aiemmin lipunmyynti, aula, logistiikka ja anniskelu.</p></div></li>
+        <li><div class="aika">2018–2025</div><div><h3>MK Elementti Betonitehdas</h3><div class="rooli">Työntekijä, kouluttaja ja logistiikkavastaava</div><p>Materiaalivirtojen ja lastausten koordinointi, uusien työntekijöiden perehdytys ja 5S-projektin toteutus.</p></div></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer id="yhteys">
+  <div class="wrap">
+    <h2>Haen IT-alan kesätyötä tai harjoittelua</h2>
+    <ul class="linkit">
+      <li><a class="paa" href="mailto:tomassalo@live.fi">tomassalo@live.fi</a></li>
+      <li><a href="https://www.linkedin.com/in/tomas-salo-61817139a/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/TomasSalo" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+    <small>Tomas Salo, Turku</small>
+  </div>
+</footer>
+
+</body>
+</html>
